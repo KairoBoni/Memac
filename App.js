@@ -33,6 +33,13 @@ setCustomTextInput({
 setCustomText({
   style: {
     fontFamily: 'Charmonman-Bold',
+    fontSize: 14,
+    textAlign: 'center',
+    backgroundColor: '#edee' ,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 7,
+    paddingHorizontal: 7,
   }   
 });
 

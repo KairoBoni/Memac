@@ -1,5 +1,6 @@
 import {season} from '../utils/Season.js';
 const initialState = {
+    season,
     mood: season,
     message: 'Hello!',
     uri: null,
@@ -26,6 +27,16 @@ export const memoryReducer = (state = initialState, action) => {
             return initialState;
         case 'UPDATE_TEXT':
             return {...state, text: action.payload};
+        case 'CHANGE_SEASON':
+            if (state.season === 'Summer') {
+                return {...state, mood: 'Autumn', season: 'Autumn'};
+            } else if (state.season === 'Autumn') {
+                return {...state, mood: 'Winter', season: 'Winter'};
+            } else if (state.season === 'Winter') {
+                return {...state, mood: 'Spring', season: 'Spring'};
+            } else /*if(state.season === 'Spring')*/ {
+                return {...state, mood: 'Summer', season: 'Summer'};
+            }    
         default:
             return state;
     }

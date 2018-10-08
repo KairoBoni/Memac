@@ -8,13 +8,26 @@ export default class Main extends React.Component {
     render() {
         const {
             ready,
+            season,
             signOut,
             changeSeason,
         } = this.props;
         const isReady = ready && true;
 
+        let path;
+
+        if (season === 'Summer') {
+            path = require('../../images/SummerBackground.jpg');
+        } else if (season === 'Autumn') {
+            path = require('../../images/AutumnBackground.jpg');
+        } else if (season === 'Winter') {
+            path = require('../../images/WinterBackground.jpg');
+        } else /*if (season === 'Spring')*/ {
+            path = require('../../images/SpringBackground.jpg');
+        }
+
         return (        
-            <ImageBackground style={{height: '100%', width: '100%'}} source={require('../../images/background.jpg')}>
+            <ImageBackground style={{height: '100%', width: '100%'}} source={path}>
                 <View style={styles.topBar}>
                     <TouchableOpacity 
                         style={styles.signOutButton} 
@@ -33,6 +46,7 @@ export default class Main extends React.Component {
                     <TouchableOpacity 
                         style={styles.changeSeasonButton} 
                         onPress={() => {
+                            console.log(path);
                             changeSeason();
                         }} 
                     >    

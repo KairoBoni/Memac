@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {signOut} from '../../actions/';
 
 const mapStateToProps = state => ({
-    id: state.user.userId,
     ready: state.appState.ready,
+    season: state.memory.season,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
         });
     },
     changeSeason: () => {
-        console.log('make the change season function!');
+        dispatch({type: 'CHANGE_SEASON'});
     }      
 });
 

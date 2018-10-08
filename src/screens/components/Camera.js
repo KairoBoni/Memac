@@ -36,7 +36,7 @@ export default class Camera extends React.Component {
         
         return (
             <TouchableWithoutFeedback onPress= {Keyboard.dismiss} accessible={false}>
-                <ImageBackground style={styles.background} source={require('../../images/mainBackground.jpg')}>
+                <ImageBackground style={styles.background} source={require('../../images/cameraBackground.jpg')}>
                     <TouchableOpacity 
                         onPress={() => {
                             clearInterval(this.timer);

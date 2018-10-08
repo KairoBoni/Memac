@@ -68,11 +68,10 @@ export default class Login extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    fbButton: {
-        height: 48,
-        width: 48,
-        borderRadius: 7,
-        marginLeft: 15,
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     appLogo: {
         height: 128,
@@ -80,59 +79,47 @@ const styles = StyleSheet.create({
     },
     loginContainer: {
         flex: 0,
+        height: 48,
         width: '90%',
-        margin: 8,
+        margin: 4,
         flexDirection: 'row',
         alignItems: 'stretch',
-        height: 48,
     },
     loginButton: {
         flex: 1,
-        backgroundColor: '#edee' ,
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 7,
-        paddingVertical: 3,
-        paddingHorizontal: 7,
+        height: 48,
     },
     loginButtonText: {
         fontSize: 16,
-        textAlign: 'center',
+        height: 48,
+    },
+    fbButton: {
+        height: 48,
+        width: 48,
+        borderRadius: 7,
+        marginLeft: 15,
     },
     registerContainer: {
         flex: 0,
+        height: 48,
         width: '90%',
-        margin: 8,
+        margin: 4,
         flexDirection: 'column',
         justifyContent: 'space-around',
-        height: 48,
     },
     registerButton: {
         flex: 1,
-        backgroundColor: '#edee' ,
-        borderWidth: 1,
-        borderColor: 'gray',
-        borderRadius: 7,
-        paddingVertical: 3,
-        paddingHorizontal: 7,
+        height: 48,
     },
     registerButtonText: {
         fontSize: 16,
-        textAlign: 'center',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    inputContainer: {
-        marginVertical: 40,
+        height: 48,
     },
     textInput: {
         fontFamily: 'roboto',
         height: 48,
         width: '90%',
         borderColor: 'gray',
-        marginTop: 8,
+        margin: 4,
     }
 });
