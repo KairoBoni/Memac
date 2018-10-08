@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Image, Text, ImageBackground, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, Image, Text, ImageBackground, View, Dimensions} from 'react-native';
 import NavigationService from '../../utils/NavigationService';
 import {PlaySound} from 'react-native-play-sound';
 
@@ -55,88 +55,84 @@ export default class Main extends React.Component {
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity 
-                    onPress={() => {
-                        NavigationService.navigate('DiaryContainer', {});
-                        PlaySound('transition');
-                    }} 
-                    style={styles.fieldContainer}
-                >
-                    <Image
-                        style={styles.image}
-                        source={require('../../images/diary.png')}
-                    />
-                    <Text style={styles.subtitle}>
-                        Diary
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => {
-                        NavigationService.navigate('CameraContainer', {});
-                        PlaySound('transition');
-                    }} 
-                    style={styles.fieldContainer}
-                >
-                    <Image
-                        style={styles.image}
-                        source={require('../../images/camera.png')}
-                    />
-                    <Text style={styles.subtitle}>
-                        Camera
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => {
-                        NavigationService.navigate('RememberContainer', {});
-                        PlaySound('transition');
-                    }} 
-                    style={styles.fieldContainer}
-                >
-                    <Image
-                        style={styles.image}
-                        source={require('../../images/album.png')}
-                    />
-                    <Text style={styles.subtitle}>
-                        Album
-                    </Text>
-                </TouchableOpacity>
+                <View style={styles.body}>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            NavigationService.navigate('DiaryContainer', {});
+                            PlaySound('transition');
+                        }} 
+                        style={styles.fieldContainer}
+                    >
+                        <Image
+                            style={styles.image}
+                            source={require('../../images/diary.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            NavigationService.navigate('CameraContainer', {});
+                            PlaySound('transition');
+                        }} 
+                        style={styles.fieldContainer}
+                    >
+                        <Image
+                            style={styles.image}
+                            source={require('../../images/camera.png')}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        onPress={() => {
+                            NavigationService.navigate('RememberContainer', {});
+                            PlaySound('transition');
+                        }} 
+                        style={styles.fieldContainer}
+                    >
+                        <Image
+                            style={styles.image}
+                            source={require('../../images/album.png')}
+                        />
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         );
     }
 }
 
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
+    body: {
+        flex: 1,
+        justifyContent: 'space-evenly',
+    },
     fieldContainer: {
         alignItems: 'center',
         alignSelf: 'center',
-        marginTop: 20,
+        marginHorizontal: windowWidth * 0.34,
     },
     image: {
-        height: 115,
-        width: 115,
-    },
-    subtitle: {
-        color: '#777',
-        margin: 8,
-        fontSize: 12,
+        height: windowWidth * 0.32,
+        width: windowWidth * 0.32,
+        borderColor: '#edee',
+        borderWidth: 2,
+        borderRadius: windowWidth * 0.16,
     },
     topBar: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     signOutButton: {
-        marginTop: 8,
-        marginBottom: 15,
-        width: '25%',
+        margin: 8,
+        width: '20%',
     },
     signOutButtonText: {
         fontSize: 16,
         textAlign: 'center',
     },
     changeSeasonButton: {
-        marginTop: 8,
-        marginBottom: 15,
-        width: '40%',
+        margin: 8,
+        width: '35%',
     },
     changeSeasonButtonText: {
         fontSize: 16,
