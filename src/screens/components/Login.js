@@ -3,9 +3,7 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, ImageBackgr
 
 export default class Login extends React.Component {
 
-    state = { email: 'jorgeluizsvi@gmail.com', password: 'jorgeluiz'};
-
-    transitionLock = false;
+    state = { email: 'jorgeluizsvi@gmail.com', password: '123456'};
 
     render() {
         const {
@@ -37,22 +35,16 @@ export default class Login extends React.Component {
                 />
                 <View style={styles.loginContainer}>
                     <TouchableOpacity  style={styles.loginButton} onPress={() => {
-                        if(!this.transitionLock){
-                            this.transitionLock = true;
-                            login(this.state.email, this.state.password);
-                            PlaySound('transition');
-                        }
+                        login(this.state.email, this.state.password);
+                        PlaySound('transition');
                     }} >
                         <Text style={styles.loginButtonText}>
                             Login
                         </Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        if (!this.transitionLock){
-                            this.transitionLock = true;
-                            fbLogin();
-                            PlaySound('transition');
-                        }
+                        fbLogin();
+                        PlaySound('transition');
                     }} >
                         <Image 
                             source={require('../../images/fb.png')}
@@ -62,11 +54,8 @@ export default class Login extends React.Component {
                 </View>
                 <View style={styles.registerContainer}>
                     <TouchableOpacity style={styles.registerButton} onPress={() => {
-                        if (!this.transitionLock){
-                            this.transitionLock = true;
-                            signUp(this.state.email, this.state.password);
-                            PlaySound('transition');
-                        }
+                        signUp(this.state.email, this.state.password);
+                        PlaySound('transition');
                     }} >
                         <Text style={styles.registerButtonText}>
                             Sign Up

@@ -52,11 +52,12 @@ setUserId = async (email, userId) => {
     return (userId);
 };
 
-export const signOut = async () => {
-    firebase
+export const signOut = async dispatch => {
+    await firebase
         .auth()
         .signOut()
         .catch(error => alert(error));
+    dispatch();
 };
 
 export const getNotifications = async userId => {
