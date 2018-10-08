@@ -15,7 +15,10 @@ const mapDispatchToProps = dispatch => ({
             dispatch({ type: 'RESET_MEMORIES'});
             dispatch({ type: 'SET_READY'});
         });
-    },      
+    },
+    changeSeason: () => {
+        console.log('make the change season function!');
+    }      
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

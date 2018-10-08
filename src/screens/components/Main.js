@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Image, Text, ImageBackground} from 'react-native';
+import {StyleSheet, TouchableOpacity, Image, Text, ImageBackground, View} from 'react-native';
 import NavigationService from '../../utils/NavigationService';
 import {PlaySound} from 'react-native-play-sound';
 
@@ -9,25 +9,38 @@ export default class Main extends React.Component {
         const {
             ready,
             signOut,
+            changeSeason,
         } = this.props;
         const isReady = ready && true;
 
         return (        
             <ImageBackground style={{height: '100%', width: '100%'}} source={require('../../images/background.jpg')}>
-                <TouchableOpacity 
-                    style={styles.signOutButton} 
-                    onPress={() => {
-                        if (isReady) {
-                            signOut();
-                            NavigationService.navigate('LoadingContainer', {});
-                            PlaySound('transition');
-                        }
-                    }} 
-                >    
-                    <Text style={styles.signOutButtonText}>
-                        Log Out
-                    </Text>
-                </TouchableOpacity>
+                <View style={styles.topBar}>
+                    <TouchableOpacity 
+                        style={styles.signOutButton} 
+                        onPress={() => {
+                            if (isReady) {
+                                signOut();
+                                NavigationService.navigate('LoadingContainer', {});
+                                PlaySound('transition');
+                            }
+                        }} 
+                    >    
+                        <Text style={styles.signOutButtonText}>
+                            Log Out
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.changeSeasonButton} 
+                        onPress={() => {
+                            changeSeason();
+                        }} 
+                    >    
+                        <Text style={styles.changeSeasonButtonText}>
+                            Change Season
+                        </Text>
+                    </TouchableOpacity>
+                </View>
                 <TouchableOpacity 
                     onPress={() => {
                         NavigationService.navigate('DiaryContainer', {});
@@ -93,13 +106,25 @@ const styles = StyleSheet.create({
         margin: 8,
         fontSize: 12,
     },
+    topBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     signOutButton: {
-        margin: 8,
+        marginTop: 8,
         marginBottom: 15,
-        alignSelf: 'flex-start',
         width: '25%',
     },
     signOutButtonText: {
+        fontSize: 16,
+        textAlign: 'center',
+    },
+    changeSeasonButton: {
+        marginTop: 8,
+        marginBottom: 15,
+        width: '40%',
+    },
+    changeSeasonButtonText: {
         fontSize: 16,
         textAlign: 'center',
     },

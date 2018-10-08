@@ -27,16 +27,13 @@ export const selectImage = dispatch => {
 
     ImagePicker.showImagePicker(options, response => {
 
-        if (response.didCancel) {
-            console.log('User cancelled video picker');
-        }
-        else if (response.error) {
+        if (response.error) {
             console.log('ImagePicker Error: ', response.error);
         }
         else if (response.customButton) {
             console.log('User tapped custom button: ', response.customButton);
         }
-        else {
+        else if (!response.didCancel) {
             dispatch({uri: response.uri, type: 'image/jpeg'});
         }
     });
@@ -53,16 +50,13 @@ export const selectVideo = dispatch => {
 
     ImagePicker.showImagePicker(options, (response) => {
   
-        if (response.didCancel) {
-            console.log('User cancelled video picker');
-        }
-        else if (response.error) {
+        if (response.error) {
             console.log('ImagePicker Error: ', response.error);
         }
         else if (response.customButton) {
             console.log('User tapped custom button: ', response.customButton);
         }
-        else {
+        else if (!response.didCancel) {
             dispatch({uri: response.uri, type: 'video/mp4'});
         }
     });
@@ -87,7 +81,7 @@ export const sendMemory = (id, mood, uri, type, dispatch, timeStamp = new Date()
     return 'Sending...';
 };
 
-export const searchMemory = async (id, mood, dispatch) => {
+export const searchMemory = (id, mood, dispatch) => {
     firebase
         .database()
         .ref(`Memories/${id}/`)
