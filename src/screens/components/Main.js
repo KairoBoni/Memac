@@ -17,7 +17,6 @@ export default class Main extends React.Component {
                 <TouchableOpacity 
                     style={styles.signOutButton} 
                     onPress={() => {
-                        console.log(1);
                         if (isReady) {
                             signOut();
                             NavigationService.navigate('LoadingContainer', {});

@@ -16,11 +16,11 @@ const mapDispatchToProps = dispatch => ({
         dispatch({type: 'UPDATE_MESSAGE', payload: message});
     },
     sendMessage: props => {
-        dispatch({type: 'OCCUPIED'});
+        dispatch({type: 'SET_OCCUPIED'});
         dispatch({type: 'UPDATE_MESSAGE', payload: ''});
         return sendMessage(props.id, props.mood, props.message, payload => {
             dispatch({type: 'UPDATE_URI', payload});
-            dispatch({type: 'READY'});
+            dispatch({type: 'SET_READY'});
         });
     }
 });

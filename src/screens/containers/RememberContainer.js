@@ -18,11 +18,11 @@ const mapDispatchToProps = dispatch => ({
         });
     },
     deleteMemory: (id, child, mood) => {
-        dispatch({type: 'OCCUPIED'});
+        dispatch({type: 'SET_OCCUPIED'});
         deleteMemory(id, child, () => {
             searchMemory(id, mood, payload => {
                 dispatch({type: 'UPDATE_MEMORIES', payload});
-                dispatch({type: 'READY'});
+                dispatch({type: 'SET_READY'});
             });
         });
     },

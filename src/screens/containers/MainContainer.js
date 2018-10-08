@@ -4,16 +4,17 @@ import {signOut} from '../../actions/';
 
 const mapStateToProps = state => ({
     id: state.user.userId,
-    ready: state.memory.ready,
+    ready: state.appState.ready,
+    transitionLock: state.appState.transitionLock,
 });
 
 const mapDispatchToProps = dispatch => ({
     signOut: async () => { 
-        await dispatch({ type: 'OCCUPIED'});
+        await dispatch({ type: 'SET_OCCUPIED'});
         await signOut ();
         dispatch({ type: 'LOGOUT'});
         dispatch({ type: 'RESET_MEMORIES'});
-        await dispatch({ type: 'READY'});
+        await dispatch({ type: 'SET_READY'});
     },      
 });
 

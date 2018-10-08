@@ -7,7 +7,6 @@ const initialState = {
     memories: [],
     index: 0,
     text: '',
-    ready: true,
 };
 
 export const memoryReducer = (state = initialState, action) => {
@@ -27,10 +26,6 @@ export const memoryReducer = (state = initialState, action) => {
             return initialState;
         case 'UPDATE_TEXT':
             return {...state, text: action.payload};
-        case 'OCCUPIED':
-            return {...state, ready: false};
-        case 'READY':
-            return {...state, ready: true};
         default:
             return state;
     }

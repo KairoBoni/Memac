@@ -24,10 +24,10 @@ const mapDispatchToProps = dispatch => ({
         });
     },
     sendMemory: (id, mood, uri, type) => {
-        dispatch({type: 'OCCUPIED'});
+        dispatch({type: 'SET_OCCUPIED'});
         return sendMemory(id, mood, uri, type, payload => {
             dispatch({type: 'UPDATE_URI', payload});
-            dispatch({type: 'READY'});
+            dispatch({type: 'SET_READY'});
         });
     }
 });
