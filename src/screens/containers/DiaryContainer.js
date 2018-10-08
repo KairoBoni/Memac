@@ -10,17 +10,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     updateMood: mood => {
-        dispatch({ type: 'UPDATE_MOOD', payload: mood});
+        dispatch({type: 'UPDATE_MOOD', payload: mood});
     },
     updateMessage: message => {
-        dispatch({ type: 'UPDATE_MESSAGE', payload: message});
+        dispatch({type: 'UPDATE_MESSAGE', payload: message});
     },
     sendMessage: props => {
-        dispatch({ type: 'OCCUPIED'});
-        dispatch({ type: 'UPDATE_MESSAGE', payload: ''});
+        dispatch({type: 'OCCUPIED'});
+        dispatch({type: 'UPDATE_MESSAGE', payload: ''});
         return sendMessage(props.id, props.mood, props.message, payload => {
-            dispatch({ type: 'UPDATE_URI', payload});
-            dispatch({ type: 'READY'});
+            dispatch({type: 'UPDATE_URI', payload});
+            dispatch({type: 'READY'});
         });
     }
 });

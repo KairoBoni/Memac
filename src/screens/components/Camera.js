@@ -19,7 +19,6 @@ export default class Camera extends React.Component {
             showAlert: false
         });
     };
-    
 
     render() {
         const {
@@ -56,7 +55,7 @@ export default class Camera extends React.Component {
                             What's the mood of the memory?
                         </Text>
                         <TextInput
-                            onChangeText={(mood) => {updateMood(mood);}}
+                            onChangeText={mood => {updateMood(mood);}}
                             value={mood}
                             editable={isReady}
                         />

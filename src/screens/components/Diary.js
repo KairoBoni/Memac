@@ -8,8 +8,6 @@ export default class Diary extends React.Component {
     state = {messageHeight: 47.5, showAlert: false, title: ''};
     timer = null;
 
-    transitionLock = false;
-
     showAlert = () => {
         this.setState({
             showAlert: true
@@ -25,10 +23,10 @@ export default class Diary extends React.Component {
     render() {
         const {
             mood, 
-            updateMood,
             message,
-            sendMessage,
+            updateMood,
             updateMessage,
+            sendMessage,
         } = this.props;
         const {showAlert} = this.state;
         const isReady = mood && true;
@@ -39,12 +37,9 @@ export default class Diary extends React.Component {
                     <ScrollView>
                         <TouchableOpacity 
                             onPress={() => {
-                                if (!this.transitionLock){
-                                    this.transitionLock = true;
-                                    clearInterval(this.timer);
-                                    NavigationService.goBack();
-                                    PlaySound('transition');
-                                }
+                                clearInterval(this.timer);
+                                NavigationService.goBack();
+                                PlaySound('transition');
                             }}
                             style={styles.backButton}
                         >    
@@ -58,7 +53,7 @@ export default class Diary extends React.Component {
                             </Text>
                             <TextInput
                                 style={styles.moodInput}
-                                onChangeText={(mood) => updateMood(mood)}
+                                onChangeText={mood => {updateMood(mood);}}
                                 value={mood}
                                 editable={isReady}
                             />
@@ -69,11 +64,11 @@ export default class Diary extends React.Component {
                             </Text>
                             <TextInput
                                 style={[styles.messageInput, {height: Math.max(47.5, this.state.messageHeight)}]}
-                                onChangeText={(message) => updateMessage(message)}
+                                onChangeText={message => {updateMessage(message);}}
                                 value={message}
                                 multiline={true}
                                 editable={isReady}
-                                onContentSizeChange={(event) => {this.setState({messageHeight: event.nativeEvent.contentSize.height})}}
+                                onContentSizeChange={event => {this.setState({messageHeight: event.nativeEvent.contentSize.height})}}
                             />
                         </View>
                         <TouchableOpacity 
@@ -114,10 +109,13 @@ export default class Diary extends React.Component {
     }
 }
 
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
     background: {
-        height: Dimensions.get('window').height, 
-        width: Dimensions.get('window').width, 
+        height: windowHeight, 
+        width: windowWidth, 
     },
     moodInput: {
     },

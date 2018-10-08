@@ -13,8 +13,6 @@ export default class Remember extends React.Component {
 
     state = {zoomed: false};
 
-    transitionLock = false;
-
     zoom = () => {
         this.setState({zoomed: !this.state.zoomed});
     }
@@ -35,11 +33,8 @@ export default class Remember extends React.Component {
                     <ImageBackground style={styles.mainView} source={require('../../images/rememberBackground.jpg')}>
                         <TouchableOpacity 
                             onPress={() => {
-                                if (!this.transitionLock){
-                                    this.transitionLock = true;
-                                    NavigationService.goBack();
-                                    PlaySound('transition');
-                                }
+                                NavigationService.goBack();
+                                PlaySound('transition');
                             }}
                             style={styles.backButton}
                         >    
@@ -49,7 +44,7 @@ export default class Remember extends React.Component {
                         </TouchableOpacity>
                         <TextInput
                             style={styles.moodInput}
-                            onChangeText={(mood) => {updateMood(mood);}}
+                            onChangeText={mood => {updateMood(mood);}}
                             value={mood}
                         />
                         <TouchableOpacity 

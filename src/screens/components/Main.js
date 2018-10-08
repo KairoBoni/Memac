@@ -5,8 +5,6 @@ import {PlaySound} from 'react-native-play-sound';
 
 export default class Main extends React.Component {
 
-    transitionLock = false;
-
     render() {
         const {
             ready,
@@ -19,8 +17,8 @@ export default class Main extends React.Component {
                 <TouchableOpacity 
                     style={styles.signOutButton} 
                     onPress={() => {
-                        if (isReady && !this.transitionLock) {
-                            this.transitionLock = true;
+                        console.log(1);
+                        if (isReady) {
                             signOut();
                             NavigationService.navigate('LoadingContainer', {});
                             PlaySound('transition');
@@ -33,11 +31,8 @@ export default class Main extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     onPress={() => {
-                        if (!this.transitionLock){
-                            this.transitionLock = true;
-                            NavigationService.navigate('DiaryContainer', {});
-                            PlaySound('transition');
-                        }
+                        NavigationService.navigate('DiaryContainer', {});
+                        PlaySound('transition');
                     }} 
                     style={styles.fieldContainer}
                 >
@@ -51,11 +46,8 @@ export default class Main extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     onPress={() => {
-                        if (!this.transitionLock){
-                            this.transitionLock = true;
-                            NavigationService.navigate('CameraContainer', {});
-                            PlaySound('transition');
-                        }
+                        NavigationService.navigate('CameraContainer', {});
+                        PlaySound('transition');
                     }} 
                     style={styles.fieldContainer}
                 >
@@ -69,11 +61,8 @@ export default class Main extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                     onPress={() => {
-                        if (!this.transitionLock){
-                            this.transitionLock = true;
-                            NavigationService.navigate('RememberContainer', {});
-                            PlaySound('transition');
-                        }
+                        NavigationService.navigate('RememberContainer', {});
+                        PlaySound('transition');
                     }} 
                     style={styles.fieldContainer}
                 >
