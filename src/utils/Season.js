@@ -1,10 +1,14 @@
+const APRIL = 3;
+const JULY = 6;
+const OCTOBER = 9;
+
 getSeason = () => {
-    date = new Date().getDate();
-    if (date < 3) {
+    MONTH = new Date().getDate();
+    if (MONTH < APRIL) {
         return 'Summer';
-    } else if (date < 6) {
+    } else if (MONTH < JULY) {
         return 'Autumn';
-    } else if (date < 9) {
+    } else if (MONTH < OCTOBER) {
         return 'Winter';
     } else {
         return 'Spring';

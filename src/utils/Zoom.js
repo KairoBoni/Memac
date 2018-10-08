@@ -4,21 +4,18 @@ import { TouchableHighlight } from 'react-native';
 export default class Zoom extends React.Component {
 
     state = {zoom: false};
-    lastPress = 0;
+    lastTap = 0;
     
     onPress = () => {
-        let newTap = new Date().getTime(); 
-        let delta = newTap - this.lastPress;
-        this.lastPress = newTap;
-        console.log(delta);
-        if (delta < 200) {
-            //zoom in/out
+        const newTap = new Date().getTime(); 
+        if (newTap - this.lastTap < 250) {
             this.setState({zoom: !this.state.zoom});
         }
+        this.lastTap = newTap;
+
     };
 
     render() {
-        console.log(this.state);
         return (
             <TouchableHighlight onPress={this.onPress}>
                 { this.props.children }

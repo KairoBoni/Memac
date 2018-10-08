@@ -87,19 +87,22 @@ export default class Presentation extends React.Component {
     }
 }
 
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
     container: {
         flexGrow: 0,
         flexShrink: 0,
-        height: Dimensions.get('window').height * 0.6,
-        width: Dimensions.get('window').width * 0.6,
+        height: windowHeight * 0.6,
+        width: windowWidth * 0.6,
         alignSelf: 'center',
     },
     presentation: {
         flexGrow: 0,
         flexShrink: 0,
-        height: Dimensions.get('window').height * 0.6,
-        width: Dimensions.get('window').width * 0.6,
+        height: windowHeight * 0.6,
+        width: windowWidth * 0.6,
         alignSelf: 'center',
     },
     forgetButton: {
