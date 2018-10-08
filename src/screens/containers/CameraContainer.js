@@ -11,22 +11,22 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     updateMood: mood => {
-        dispatch({ type: 'UPDATE_MOOD', payload: mood});
+        dispatch({type: 'UPDATE_MOOD', payload: mood});
     },
     selectImage: () => {
         selectImage(payload => {
-            dispatch({ type: 'UPDATE_URI', payload});
+            dispatch({type: 'UPDATE_URI', payload});
         });
     },
     selectVideo: () => {
         selectVideo(payload => {
-            dispatch({ type: 'UPDATE_URI', payload});
+            dispatch({type: 'UPDATE_URI', payload});
         });
     },
     sendMemory: (id, mood, uri, type) => {
         dispatch({type: 'OCCUPIED'});
         return sendMemory(id, mood, uri, type, payload => {
-            dispatch({ type: 'UPDATE_URI', payload});
+            dispatch({type: 'UPDATE_URI', payload});
             dispatch({type: 'READY'});
         });
     }

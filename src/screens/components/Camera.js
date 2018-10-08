@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Dimensions, TouchableWithoutFeedback, Keyboard, Image, ImageBackground } from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, TextInput, Dimensions, TouchableWithoutFeedback, Keyboard, Image, ImageBackground} from 'react-native';
 import NavigationService from '../../utils/NavigationService';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -22,14 +22,14 @@ export default class Camera extends React.Component {
 
     render() {
         const {
+            id,
             mood,
+            uri,
+            type,
             updateMood,
             selectImage,
             selectVideo,
             sendMemory,
-            id,
-            uri,
-            type,
         } = this.props;
         const {showAlert} = this.state;
         const isReady = mood && true;
@@ -55,7 +55,7 @@ export default class Camera extends React.Component {
                             What's the mood of the memory?
                         </Text>
                         <TextInput
-                            onChangeText={(mood) => updateMood(mood)}
+                            onChangeText={(mood) => {updateMood(mood);}}
                             value={mood}
                             editable={isReady}
                         />
@@ -134,13 +134,14 @@ const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     background: {
-        height: Dimensions.get('window').height, 
-        width: Dimensions.get('window').width, 
+        height: windowHeight, 
+        width: windowWidth, 
     },
     sideBySideIcons: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginHorizontal: 25,
+        marginVertical: 15,
     },
     backButton: {
         width: '15%',
@@ -174,8 +175,8 @@ const styles = StyleSheet.create({
     presentationContainer: {
         flexGrow: 0,
         flexShrink: 0,
-        height: Dimensions.get('window').height * 0.6,
-        width: Dimensions.get('window').width * 0.6,
+        height: windowHeight * 0.6,
+        width: windowWidth * 0.6,
         alignSelf: 'center',
     },
     container: {
@@ -183,8 +184,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     image: {
-        height: Dimensions.get('window').height * 0.6,
-        width: Dimensions.get('window').width * 0.6,
+        height: windowHeight * 0.6,
+        width: windowWidth * 0.6,
         alignSelf: 'center',
     },
 });
