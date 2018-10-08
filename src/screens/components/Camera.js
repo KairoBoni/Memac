@@ -19,6 +19,7 @@ export default class Camera extends React.Component {
             showAlert: false
         });
     };
+    
 
     render() {
         const {
