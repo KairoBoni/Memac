@@ -88,7 +88,6 @@ export const listenAuthStatus = dispatch => {
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             userId = await getUserId(user._user.email);
-            console.log(userId);
             NavigationService.navigate('MainContainer');
             this.notificationListener = firebase.notifications().onNotification((notification) => {
 
