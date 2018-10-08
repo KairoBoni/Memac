@@ -76,13 +76,16 @@ export default class Remember extends React.Component {
     }
 }
 
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
     fullscreen: {
-        height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width,
+        height: windowHeight,
+        width: windowWidth,
     },
     mainView: {
-        height: Dimensions.get('window').height,
+        height: windowHeight,
     },
     backButton: {
         width: '15%',

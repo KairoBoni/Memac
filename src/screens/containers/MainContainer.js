@@ -8,13 +8,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    signOut: async () => { 
+    signOut: () => { 
         dispatch({ type: 'SET_OCCUPIED'});
-        await signOut (() => {
+        signOut (() => {
             dispatch({ type: 'LOGOUT'});
             dispatch({ type: 'RESET_MEMORIES'});
+            dispatch({ type: 'SET_READY'});
         });
-        dispatch({ type: 'SET_READY'});
     },      
 });
 
