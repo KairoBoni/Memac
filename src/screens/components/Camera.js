@@ -32,11 +32,10 @@ export default class Camera extends React.Component {
             sendMemory,
         } = this.props;
         const {showAlert} = this.state;
-        const isReady = mood && true;
         
         return (
             <TouchableWithoutFeedback onPress= {Keyboard.dismiss} accessible={false}>
-                <ImageBackground style={styles.background} source={require('../../images/cameraBackground.jpg')}>
+                <View style={{backgroundColor: '#66aaee', flex: 1}}>
                     <View style={styles.topBar}>
                         <TouchableOpacity 
                             onPress={() => {
@@ -59,30 +58,31 @@ export default class Camera extends React.Component {
                             style={styles.moodInput} 
                             onChangeText={mood => {updateMood(mood);}}
                             value={mood}
-                            editable={isReady}
                         />
                     </View>
                     <View style={styles.sideBySideIcons}>
                         <TouchableOpacity 
                             onPress={() => {selectImage();}}
                         >
-                            <Image
-                                source={require('../../images/photo.png')}
-                                style={styles.selectButton}
-                            />
+                            <View style={styles.selectButton}>
+                                <Text style={styles.selectButtonText}>
+                                    Photo
+                                </Text>
+                            </View>
                         </TouchableOpacity>
                         <TouchableOpacity 
                             onPress={() => {selectVideo();}}
                         >
-                            <Image
-                                source={require('../../images/film.png')}
-                                style={styles.selectButton}
-                            />
+                            <View style={styles.selectButton}>
+                                <Text style={styles.selectButtonText}>
+                                    Film
+                                </Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity 
                         onPress={() => {
-                            if ((isReady && uri)) {
+                            if ((mood && uri)) {
                                 this.setState({title: sendMemory(id, mood, uri, type)}, () => {
                                     this.showAlert();
                                     this.timer = setInterval(() => {
@@ -94,12 +94,12 @@ export default class Camera extends React.Component {
                         style={styles.sendButton} 
                     >
                         {type === 'video/mp4' && 
-                            <Text style={[styles.sendButtonText, !(isReady && uri) && styles.unavaible]}>
+                            <Text style={[styles.sendButtonText, !(mood && uri) && styles.unavaible]}>
                                 Send Video
                             </Text>
                         }
                         {type === 'image/jpeg' && 
-                            <Text style={[styles.sendButtonText, !(isReady && uri) && styles.unavaible]}>
+                            <Text style={[styles.sendButtonText, !(mood && uri) && styles.unavaible]}>
                                 Send Photo
                             </Text>
                         }
@@ -117,8 +117,7 @@ export default class Camera extends React.Component {
                         closeOnTouchOutside={false}
                         closeOnHardwareBackPress={false}
                     />
-
-                </ImageBackground>
+                </View>
             </TouchableWithoutFeedback>
         );
     }
@@ -158,7 +157,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         textAlignVertical: 'center',
-        color: 'black',
     },
     topBar: {
         flexDirection: 'row',
@@ -175,9 +173,15 @@ const styles = StyleSheet.create({
     selectButton: {
         height: lesserDimension * 0.2,
         width: lesserDimension * 0.2,
-        borderWidth: 1,
+        margin: 8,
+    },
+    selectButtonText: {
+        height: lesserDimension * 0.2,
+        width: lesserDimension * 0.2,
         borderRadius: lesserDimension * 0.1,
-        borderColor: '#edee', 
+        fontSize: 20,
+        textAlign: 'center',
+        textAlignVertical: 'center',
     },
     presentationContainer: {
         flexGrow: 0,
