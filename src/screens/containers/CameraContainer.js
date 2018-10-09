@@ -13,14 +13,16 @@ const mapDispatchToProps = dispatch => ({
     updateMood: mood => {
         dispatch({type: 'UPDATE_MOOD', payload: mood});
     },
-    selectImage: () => {
+    selectImage: cb => {
         selectImage(payload => {
             dispatch({type: 'UPDATE_URI', payload});
+            cb();
         });
     },
-    selectVideo: () => {
+    selectVideo: cb => {
         selectVideo(payload => {
             dispatch({type: 'UPDATE_URI', payload});
+            cb();
         });
     },
     sendMemory: (id, mood, uri, type) => {

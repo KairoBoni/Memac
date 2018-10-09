@@ -8,6 +8,16 @@ export default class Camera extends React.Component {
     state = {showAlert: false, title: ''};
     timer = null;
 
+    safeToExit = true;
+
+    setSafe = () => {
+        this.safeToExit = true;
+    };
+
+    setUnsafe = () => {
+        this.safeToExit = false;
+    };
+
     showAlert = () => {
         this.setState({
             showAlert: true
@@ -39,9 +49,11 @@ export default class Camera extends React.Component {
                     <View style={styles.topBar}>
                         <TouchableOpacity 
                             onPress={() => {
-                                clearInterval(this.timer);
-                                NavigationService.goBack();
-                                PlaySound('transition');
+                                if (this.safeToExit){
+                                    clearInterval(this.timer);
+                                    NavigationService.goBack();
+                                    PlaySound('transition');
+                                }
                             }}
                             style={styles.backButton}
                         >    
@@ -62,7 +74,10 @@ export default class Camera extends React.Component {
                     </View>
                     <View style={styles.sideBySideIcons}>
                         <TouchableOpacity 
-                            onPress={() => {selectImage();}}
+                            onPress={() => {
+                                this.setUnsafe();
+                                selectImage(this.setSafe.bind(this));
+                            }}
                         >
                             <View style={styles.selectButton}>
                                 <Text style={styles.selectButtonText}>
@@ -71,7 +86,10 @@ export default class Camera extends React.Component {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity 
-                            onPress={() => {selectVideo();}}
+                            onPress={() => {
+                                this.setUnsafe();
+                                selectVideo(this.setSafe.bind(this));
+                            }}
                         >
                             <View style={styles.selectButton}>
                                 <Text style={styles.selectButtonText}>
