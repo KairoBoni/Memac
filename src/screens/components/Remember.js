@@ -30,7 +30,7 @@ export default class Remember extends React.Component {
         if (!this.state.zoomed) {
             return (
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-                    <ImageBackground style={styles.mainView} source={require('../../images/rememberBackground.jpg')}>
+                    <ImageBackground style={styles.background} source={require('../../images/rememberBackground.jpg')}>
                         <TouchableOpacity 
                             onPress={() => {
                                 NavigationService.goBack();
@@ -86,21 +86,23 @@ const styles = StyleSheet.create({
         height: windowHeight,
         width: windowWidth,
     },
-    mainView: {
-        height: windowHeight,
+    background: {
+        height: windowHeight, 
+        width: windowWidth, 
     },
     backButton: {
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
         alignSelf: 'flex-start',
+        margin: 8,
     },
     backButtonText: {
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
         borderRadius: lesserDimension * 0.08,
-        borderWidth: 1,
-        alignSelf: 'center',
         fontSize: 18,
+        textAlign: 'center',
+        textAlignVertical: 'center',
     },
     searchButton: {
         margin: 8,
@@ -111,7 +113,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     moodInput:{
-        marginHorizontal: 20,
-        marginVertical: 10,
+        marginVertical: 8,
     },    
 });

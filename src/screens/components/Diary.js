@@ -82,7 +82,7 @@ export default class Diary extends React.Component {
                             }} 
                             style={styles.sendMessageButton}
                         >
-                            <Text style={[styles.sendMessageButtonText, !(mood  && message) && {color: '#aaa'}]}>
+                            <Text style={[styles.sendMessageButtonText, !(mood  && message) && styles.unavaible]}>
                                 Send
                             </Text>
                         </TouchableOpacity>
@@ -118,12 +118,13 @@ const styles = StyleSheet.create({
         width: windowWidth, 
     },
     moodInput: {
+        fontFamily: 'roboto',
         height: 47.5,
     },
     messageInput: {
+        fontFamily: 'roboto',
     },
     backButton: {
-        flex: 1,
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
         alignSelf: 'flex-start',
@@ -136,7 +137,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         textAlignVertical: 'center',
-        color: 'black',
     },
     sendMessageButton: {
         alignSelf: 'center',
@@ -148,10 +148,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         textAlignVertical: 'center',
-        color: 'black',
     },
     container: {
         marginHorizontal: 20,
         marginVertical: 10,
-    }
+    },
+    unavaible: {
+        color: '#aaac',
+        backgroundColor: '#333c',
+    },
 });

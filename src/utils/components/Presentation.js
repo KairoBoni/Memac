@@ -48,16 +48,6 @@ export default class Presentation extends React.Component {
         if (!zoomed) {
             return (
                 <View>
-                    <Animated.View 
-                        style={[styles.container, {left: this.position}]}
-                        {...this.panResponder.panHandlers}
-                    >
-                        {memoryCount > 0 && 
-                            <View style={styles.presentation}>                            
-                                <PresentationElementContainer zoomed={zoomed}/>
-                            </View>         
-                        }
-                    </Animated.View>
                     <TouchableOpacity 
                         onPress={() => {
                             if (isReady){
@@ -71,7 +61,17 @@ export default class Presentation extends React.Component {
                                 Forget
                             </Text>
                         }
-                    </TouchableOpacity>  
+                    </TouchableOpacity>
+                    <Animated.View 
+                        style={[styles.container, {left: this.position}]}
+                        {...this.panResponder.panHandlers}
+                    >
+                        {memoryCount > 0 && 
+                            <View style={styles.presentation}>                            
+                                <PresentationElementContainer zoomed={zoomed}/>
+                            </View>         
+                        }
+                    </Animated.View>
                 </View>
             );
         } else {

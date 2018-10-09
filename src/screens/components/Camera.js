@@ -37,19 +37,20 @@ export default class Camera extends React.Component {
         return (
             <TouchableWithoutFeedback onPress= {Keyboard.dismiss} accessible={false}>
                 <ImageBackground style={styles.background} source={require('../../images/cameraBackground.jpg')}>
-                    <TouchableOpacity 
-                        onPress={() => {
-                            clearInterval(this.timer);
-                            NavigationService.goBack();
-                            PlaySound('transition');
-                        }}
-                        style={styles.backButton}
-                    >    
-                        <Text style={styles.backButtonText}>
-                            Back
-                        </Text>
-                    </TouchableOpacity>
-                    
+                    <View style={styles.topBar}>
+                        <TouchableOpacity 
+                            onPress={() => {
+                                clearInterval(this.timer);
+                                NavigationService.goBack();
+                                PlaySound('transition');
+                            }}
+                            style={styles.backButton}
+                        >    
+                            <Text style={styles.backButtonText}>
+                                Back
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                     <View style={styles.container}>
                         <Text>
                             What's the mood of the memory?
@@ -92,17 +93,17 @@ export default class Camera extends React.Component {
                         style={styles.sendButton} 
                     >
                         {type === 'video/mp4' && 
-                            <Text style={[styles.sendButtonText, !(isReady && uri) && {color: '#aaa'}]}>
+                            <Text style={[styles.sendButtonText, !(isReady && uri) && styles.unavaible]}>
                                 Send Video
                             </Text>
                         }
                         {type === 'image/jpeg' && 
-                            <Text style={[styles.sendButtonText, !(isReady && uri) && {color: '#aaa'}]}>
+                            <Text style={[styles.sendButtonText, !(isReady && uri) && styles.unavaible]}>
                                 Send Photo
                             </Text>
                         }
                         {type === null && 
-                            <Text style={[styles.sendButtonText, {color: '#aaa'}]}>
+                            <Text style={[styles.sendButtonText, styles.unavaible]}>
                                 Send Memory
                             </Text>
                         }
@@ -149,14 +150,20 @@ const styles = StyleSheet.create({
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
         alignSelf: 'flex-start',
+        margin: 8,
     },
     backButtonText: {
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
         borderRadius: lesserDimension * 0.08,
-        borderWidth: 1,
-        alignSelf: 'center',
         fontSize: 18,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        color: 'black',
+    },
+    topBar: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     sendButton: {
         marginTop: 5,
@@ -188,5 +195,9 @@ const styles = StyleSheet.create({
         height: windowHeight * 0.6,
         width: windowWidth * 0.6,
         alignSelf: 'center',
+    },
+    unavaible: {
+        color: '#aaac',
+        backgroundColor: '#333c',
     },
 });

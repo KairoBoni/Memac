@@ -20,13 +20,10 @@ setCustomTextInput({
   underlineColorAndroid: '#0000',
   style: {
     fontFamily: 'Charmonman-Bold',
-    backgroundColor: '#edee' ,
     fontSize: 16,
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 7,
-    paddingVertical: 3,
-    paddingHorizontal: 7,
+    backgroundColor: '#edee' ,
+    borderRadius: 14,
+    paddingHorizontal: 3,
   }   
 });
 
@@ -35,9 +32,9 @@ setCustomText({
     fontFamily: 'Charmonman-Bold',
     fontSize: 14,
     textAlign: 'center',
-    paddingHorizontal: 3,
-    backgroundColor: 'rgba(250, 250, 250, 0.5)',
+    backgroundColor: 'rgba(250, 250, 250, 0.74)',
     borderRadius: 14,
+    paddingHorizontal: 3,
   }   
 });
 

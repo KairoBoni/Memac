@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         borderRadius: 5,
-        backgroundColor: '#edee',
+        backgroundColor: '#ffd299',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#543206',
     },
 });

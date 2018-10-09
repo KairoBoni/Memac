@@ -27,7 +27,7 @@ export default class Main extends React.Component {
         }
 
         return (        
-            <ImageBackground style={{height: '100%', width: '100%'}} source={path}>
+            <ImageBackground style={styles.background} source={path}>
                 <View style={styles.topBar}>
                     <TouchableOpacity 
                         style={styles.signOutButton} 
@@ -104,6 +104,10 @@ const lesserDimension = (windowHeight > windowWidth)
     ? windowWidth : windowHeight;
 
 const styles = StyleSheet.create({
+    background: {
+        height: windowHeight, 
+        width: windowWidth, 
+    },
     body: {
         flex: 1,
         justifyContent: 'space-evenly',
