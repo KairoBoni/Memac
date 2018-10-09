@@ -126,18 +126,28 @@ const styles = StyleSheet.create({
     },
     signOutButton: {
         margin: 8,
-        width: '20%',
+        width: '23%',
     },
     signOutButtonText: {
-        fontSize: 16,
+        backgroundColor: 'rgba(250, 250, 250, 0.3)',
+        borderRadius: 14,
+        borderWidth: 0,
+        fontSize: 18,
+        color: 'black',
         textAlign: 'center',
+        textDecorationLine: 'underline',
     },
     changeSeasonButton: {
         margin: 8,
-        width: '35%',
+        width: '38%',
     },
     changeSeasonButtonText: {
-        fontSize: 16,
+        backgroundColor: 'rgba(250, 250, 250, 0.3)',
+        borderRadius: 14,
+        borderWidth: 0,
+        fontSize: 18,
+        color: 'black',
         textAlign: 'center',
+        textDecorationLine: 'underline',
     },
 });

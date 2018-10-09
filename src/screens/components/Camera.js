@@ -131,6 +131,8 @@ export default class Camera extends React.Component {
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
+const lesserDimension = (windowHeight > windowWidth)
+    ? windowWidth : windowHeight;
 
 const styles = StyleSheet.create({
     background: {
@@ -144,13 +146,17 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     backButton: {
-        width: '15%',
-        margin: 8,
-        marginBottom: 15,
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
+        alignSelf: 'flex-start',
     },
     backButtonText: {
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
+        borderRadius: lesserDimension * 0.08,
+        borderWidth: 1,
         alignSelf: 'center',
-        fontSize: 16,
+        fontSize: 18,
     },
     sendButton: {
         marginTop: 5,
@@ -161,10 +167,10 @@ const styles = StyleSheet.create({
         color: '#f77',  
     },
     selectButton: {
-        height: windowWidth * 0.2,
-        width: windowWidth * 0.2,
+        height: lesserDimension * 0.2,
+        width: lesserDimension * 0.2,
         borderWidth: 1,
-        borderRadius: windowWidth * 0.1,
+        borderRadius: lesserDimension * 0.1,
         borderColor: '#edee', 
     },
     presentationContainer: {

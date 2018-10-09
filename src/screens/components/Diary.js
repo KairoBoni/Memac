@@ -29,7 +29,6 @@ export default class Diary extends React.Component {
             sendMessage,
         } = this.props;
         const {showAlert} = this.state;
-        const isReady = mood && true;
         
         return (
             <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -55,7 +54,7 @@ export default class Diary extends React.Component {
                                 style={styles.moodInput}
                                 onChangeText={mood => {updateMood(mood);}}
                                 value={mood}
-                                editable={isReady}
+                                maxLength={40}
                             />
                         </View>
                         <View style={styles.container}>
@@ -67,13 +66,12 @@ export default class Diary extends React.Component {
                                 onChangeText={message => {updateMessage(message);}}
                                 value={message}
                                 multiline={true}
-                                editable={isReady}
                                 onContentSizeChange={event => {this.setState({messageHeight: event.nativeEvent.contentSize.height})}}
                             />
                         </View>
                         <TouchableOpacity 
                             onPress={() => {
-                                if (isReady && message) {
+                                if (message) {
                                     this.setState({title: sendMessage(this.props)}, () => {
                                         this.showAlert();
                                         this.timer = setInterval(() => {
@@ -84,7 +82,7 @@ export default class Diary extends React.Component {
                             }} 
                             style={styles.sendMessageButton}
                         >
-                            <Text style={[styles.sendMessageButtonText, !(isReady  && message) && {color: '#aaa'}]}>
+                            <Text style={[styles.sendMessageButtonText, !(mood  && message) && {color: '#aaa'}]}>
                                 Send
                             </Text>
                         </TouchableOpacity>
@@ -111,6 +109,8 @@ export default class Diary extends React.Component {
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
+const lesserDimension = (windowHeight > windowWidth)
+    ? windowWidth : windowHeight;
 
 const styles = StyleSheet.create({
     background: {
@@ -118,31 +118,37 @@ const styles = StyleSheet.create({
         width: windowWidth, 
     },
     moodInput: {
+        height: 47.5,
     },
     messageInput: {
     },
     backButton: {
-        height: windowWidth * 0.16,
-        width: windowWidth * 0.16,
+        flex: 1,
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
         alignSelf: 'flex-start',
+        margin: 8,
     },
     backButtonText: {
-        height: windowWidth * 0.16,
-        width: windowWidth * 0.16,
-        borderRadius: windowWidth * 0.08,
-        borderWidth: 1,
-        alignSelf: 'center',
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
+        borderRadius: lesserDimension * 0.08,
         fontSize: 18,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        color: 'black',
     },
     sendMessageButton: {
-        margin: 8,
-        marginBottom: 15,
         alignSelf: 'center',
     },
     sendMessageButtonText: {
-        fontSize: 16,
-        color: '#c7e',
-        marginBottom: 20,
+        height: lesserDimension * 0.2,
+        width: lesserDimension * 0.2,
+        borderRadius: lesserDimension * 0.1,
+        fontSize: 20,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        color: 'black',
     },
     container: {
         marginHorizontal: 20,

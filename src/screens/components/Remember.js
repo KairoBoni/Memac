@@ -78,6 +78,8 @@ export default class Remember extends React.Component {
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
+const lesserDimension = (windowHeight > windowWidth)
+    ? windowWidth : windowHeight;
 
 const styles = StyleSheet.create({
     fullscreen: {
@@ -88,13 +90,17 @@ const styles = StyleSheet.create({
         height: windowHeight,
     },
     backButton: {
-        width: '15%',
-        margin: 8,
-        marginBottom: 15,
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
+        alignSelf: 'flex-start',
     },
     backButtonText: {
+        height: lesserDimension * 0.16,
+        width: lesserDimension * 0.16,
+        borderRadius: lesserDimension * 0.08,
+        borderWidth: 1,
         alignSelf: 'center',
-        fontSize: 16,
+        fontSize: 18,
     },
     searchButton: {
         margin: 8,

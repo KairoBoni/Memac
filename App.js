@@ -35,11 +35,9 @@ setCustomText({
     fontFamily: 'Charmonman-Bold',
     fontSize: 14,
     textAlign: 'center',
-    backgroundColor: '#edee' ,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 7,
-    paddingHorizontal: 7,
+    paddingHorizontal: 3,
+    backgroundColor: 'rgba(250, 250, 250, 0.5)',
+    borderRadius: 14,
   }   
 });
 
