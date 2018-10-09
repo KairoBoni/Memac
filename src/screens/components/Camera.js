@@ -56,6 +56,7 @@ export default class Camera extends React.Component {
                             What's the mood of the memory?
                         </Text>
                         <TextInput
+                            style={styles.moodInput} 
                             onChangeText={mood => {updateMood(mood);}}
                             value={mood}
                             editable={isReady}
@@ -86,7 +87,7 @@ export default class Camera extends React.Component {
                                     this.showAlert();
                                     this.timer = setInterval(() => {
                                         this.hideAlert();
-                                    }, 3000);
+                                    }, 1800);
                                 });
                             }
                         }}
@@ -115,13 +116,6 @@ export default class Camera extends React.Component {
                         title={this.state.title}
                         closeOnTouchOutside={false}
                         closeOnHardwareBackPress={false}
-                        showConfirmButton={true}
-                        confirmText="Ok"
-                        confirmButtonColor="#EE8B75"
-                        onConfirmPressed={() => {
-                            this.hideAlert();
-                            clearInterval(this.timer);
-                        }}
                     />
 
                 </ImageBackground>
@@ -139,6 +133,11 @@ const styles = StyleSheet.create({
     background: {
         height: windowHeight, 
         width: windowWidth, 
+    },
+    moodInput: {
+        fontFamily: 'roboto',
+        height: 47.5,
+        marginVertical: 4,
     },
     sideBySideIcons: {
         flexDirection: 'row',

@@ -46,7 +46,6 @@ export default class Main extends React.Component {
                     <TouchableOpacity 
                         style={styles.changeSeasonButton} 
                         onPress={() => {
-                            console.log(path);
                             changeSeason();
                         }} 
                     >    

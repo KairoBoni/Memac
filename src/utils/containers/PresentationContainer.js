@@ -5,8 +5,6 @@ const mapStateToProps = state => ({
     memoryCount: state.memory.memories.length,
     memories: state.memory.memories,
     index: state.memory.index,
-    ready: state.memory.ready,
-    status: state.user.connection,
 });
 
 const mapDispatchToProps = dispatch => ({

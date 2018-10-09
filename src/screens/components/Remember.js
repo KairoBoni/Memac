@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Dimensions} from 'react-native';
+import {StyleSheet, Text, TextInput, ImageBackground, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Dimensions, View} from 'react-native';
 import NavigationService from '../../utils/NavigationService';
 import PresentationContainer from '../../utils/containers/PresentationContainer';
 
@@ -17,6 +17,10 @@ export default class Remember extends React.Component {
         this.setState({zoomed: !this.state.zoomed});
     }
 
+    componentDidMount() {
+        this.props.searchMemory(this.props.id, this.props.mood);
+    }
+
     render() {
         const {
             searchMemory,
@@ -25,8 +29,6 @@ export default class Remember extends React.Component {
             id,
         } = this.props;
         
-        const isReady = mood && true;
-
         if (!this.state.zoomed) {
             return (
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -42,19 +44,17 @@ export default class Remember extends React.Component {
                                 Back
                             </Text>
                         </TouchableOpacity>
-                        <TextInput
-                            style={styles.moodInput}
-                            onChangeText={mood => {updateMood(mood);}}
-                            value={mood}
-                        />
-                        <TouchableOpacity 
-                            onPress={() => {if(isReady) {searchMemory(id, mood);}}}
-                            style={styles.searchButton} 
-                        >
-                            <Text style={styles.searchButtonText}>
-                                Search
-                            </Text>
-                        </TouchableOpacity>
+                        <View style={styles.container}>
+                            <TextInput
+                                style={styles.moodInput}
+                                onChangeText={mood => {
+                                    updateMood(mood);
+                                    searchMemory(id, mood);
+                                }}
+                                value={mood}
+                            />
+                        </View>
+                            
                         <PresentationContainer
                             delete={this.onDelete.bind(this)}
                             zoom={this.zoom.bind(this)}
@@ -90,6 +90,11 @@ const styles = StyleSheet.create({
         height: windowHeight, 
         width: windowWidth, 
     },
+    moodInput: {
+        fontFamily: 'roboto',
+        height: 47.5,
+        marginVertical: 4,
+    },
     backButton: {
         height: lesserDimension * 0.16,
         width: lesserDimension * 0.16,
@@ -104,15 +109,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
     },
-    searchButton: {
-        margin: 8,
-        marginBottom: 15,
+    container: {
+        marginHorizontal: 20,
+        marginVertical: 10,
     },
-    searchButtonText: {
-        alignSelf: 'center',
-        fontSize: 16,
-    },
-    moodInput:{
-        marginVertical: 8,
-    },    
 });

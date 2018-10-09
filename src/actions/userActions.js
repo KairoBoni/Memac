@@ -6,7 +6,7 @@ export const login = async (email, password) => {
     await firebase
         .auth()
         .signInAndRetrieveDataWithEmailAndPassword(email, password)
-        .catch(error => {console.log(error);});
+        .catch(error => {console.error(error);});
     
     if(firebase.auth()._user) {
         return await getUserId(firebase.auth()._user._user.email);
@@ -75,7 +75,7 @@ export const fbLogin = async () => {
         const data = await AccessToken.getCurrentAccessToken();
         const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
         firebase.auth().signInAndRetrieveDataWithCredential(credential);
-    }).catch (error => {console.log(error);});
+    }).catch (error => {console.error(error);});
 
     if(firebase.auth()._user) {
         return await getUserId(firebase.auth()._user._user.email);

@@ -36,28 +36,29 @@ export default class Presentation extends React.Component {
         },
     });
 
+    isReady = false;
+
+    componentDidMount() {
+        this.isReady = true;
+    }
+
     render() {
         const {
-            ready, 
-            status,
             zoomed,
             memoryCount,
         } = this.props;
-        const isReady = ready && status;
         
         if (!zoomed) {
             return (
                 <View>
                     <TouchableOpacity 
                         onPress={() => {
-                            if (isReady){
-                                this.props.delete(this.props);
-                            }
+                            this.props.delete(this.props);
                         }}
                         style={styles.forgetButton} 
                     >
                         {memoryCount > 0 && 
-                            <Text style={[styles.forgetButtonText, !isReady && {color: '#aaa'}]}>
+                            <Text style={styles.forgetButtonText}>
                                 Forget
                             </Text>
                         }
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
     },
     forgetButtonText: {
         color: 'red',
+        backgroundColor: 'rgba(255, 220, 220, 0.8)',
         alignSelf: 'center',
         fontSize: 16,
     },

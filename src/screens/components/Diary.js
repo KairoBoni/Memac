@@ -76,7 +76,7 @@ export default class Diary extends React.Component {
                                         this.showAlert();
                                         this.timer = setInterval(() => {
                                             this.hideAlert();
-                                        }, 3000);
+                                        }, 1800);
                                     });
                                 }
                             }} 
@@ -93,13 +93,6 @@ export default class Diary extends React.Component {
                         title={this.state.title}
                         closeOnTouchOutside={false}
                         closeOnHardwareBackPress={false}
-                        showConfirmButton={true}
-                        confirmText="Ok"
-                        confirmButtonColor="#EE8B75"
-                        onConfirmPressed={() => {
-                            this.hideAlert();
-                            clearInterval(this.timer);
-                        }}
                     />
                 </ImageBackground>
             </TouchableWithoutFeedback>
@@ -120,9 +113,11 @@ const styles = StyleSheet.create({
     moodInput: {
         fontFamily: 'roboto',
         height: 47.5,
+        marginVertical: 4,
     },
     messageInput: {
         fontFamily: 'roboto',
+        marginVertical: 4,
     },
     backButton: {
         height: lesserDimension * 0.16,
