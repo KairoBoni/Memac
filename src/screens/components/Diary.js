@@ -122,14 +122,17 @@ const styles = StyleSheet.create({
     messageInput: {
     },
     backButton: {
-        margin: 8,
-        marginBottom: 15,
+        height: windowWidth * 0.16,
+        width: windowWidth * 0.16,
         alignSelf: 'flex-start',
-        width: '15%',
     },
     backButtonText: {
+        height: windowWidth * 0.16,
+        width: windowWidth * 0.16,
+        borderRadius: windowWidth * 0.08,
+        borderWidth: 1,
         alignSelf: 'center',
-        fontSize: 16,
+        fontSize: 18,
     },
     sendMessageButton: {
         margin: 8,

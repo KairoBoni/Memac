@@ -100,6 +100,8 @@ export default class Main extends React.Component {
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
+const lesserDimension = (windowHeight > windowWidth)
+    ? windowWidth : windowHeight;
 
 const styles = StyleSheet.create({
     body: {
@@ -109,14 +111,14 @@ const styles = StyleSheet.create({
     fieldContainer: {
         alignItems: 'center',
         alignSelf: 'center',
-        marginHorizontal: windowWidth * 0.34,
+        marginHorizontal: lesserDimension * 0.34,
     },
     image: {
-        height: windowWidth * 0.32,
-        width: windowWidth * 0.32,
+        height: lesserDimension * 0.32,
+        width: lesserDimension * 0.32,
         borderColor: '#edee',
         borderWidth: 2,
-        borderRadius: windowWidth * 0.16,
+        borderRadius: lesserDimension * 0.16,
     },
     topBar: {
         flexDirection: 'row',

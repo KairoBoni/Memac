@@ -152,13 +152,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 16,
     },
-    uploadedImage: {
-        alignSelf: 'center',
-        margin: 'auto',
-        marginTop: 40,
-        height: windowHeight * 0.65,
-        width: windowWidth * 0.65,
-    },
     sendButton: {
         marginTop: 5,
     },
@@ -168,9 +161,11 @@ const styles = StyleSheet.create({
         color: '#f77',  
     },
     selectButton: {
-        marginTop: 5,
-        height: 65,
-        width: 65,
+        height: windowWidth * 0.2,
+        width: windowWidth * 0.2,
+        borderWidth: 1,
+        borderRadius: windowWidth * 0.1,
+        borderColor: '#edee', 
     },
     presentationContainer: {
         flexGrow: 0,
