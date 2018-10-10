@@ -111,12 +111,10 @@ const styles = StyleSheet.create({
         width: windowWidth, 
     },
     moodInput: {
-        fontFamily: 'roboto',
         height: 47.5,
         marginVertical: 4,
     },
     messageInput: {
-        fontFamily: 'roboto',
         marginVertical: 4,
     },
     backButton: {

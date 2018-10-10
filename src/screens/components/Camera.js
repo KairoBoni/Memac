@@ -152,7 +152,6 @@ const styles = StyleSheet.create({
         width: windowWidth, 
     },
     moodInput: {
-        fontFamily: 'roboto',
         height: 47.5,
         marginVertical: 4,
     },

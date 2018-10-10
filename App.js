@@ -19,7 +19,6 @@ import {setCustomTextInput, setCustomText} from 'react-native-global-props';
 setCustomTextInput({
   underlineColorAndroid: '#0000',
   style: {
-    fontFamily: 'Charmonman-Bold',
     fontSize: 16,
     backgroundColor: '#edee' ,
     borderRadius: 14,

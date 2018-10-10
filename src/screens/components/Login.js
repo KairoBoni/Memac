@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
         height: 48,
     },
     textInput: {
-        fontFamily: 'roboto',
         height: 48,
         width: '90%',
         borderColor: 'gray',
